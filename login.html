@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body{
+            background:linear-gradient(to right, #333399 ,#ff00cc ) ;
+            
+            position: relative;
+            
+        }
+        .father{
+            border-radius: 10px;
+            box-sizing: border-box;
+    width: 500px;
+    height: 500px;
+    background-color:rgba(255,255,255, 0.5);
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 100px;
+    padding-top: 15px;
+    position: relative;
+        }
+        .father::after{
+    content: '';
+    position: absolute;
+    background: rgba(255,255,255,.15);
+    inset: 0;
+    transform: rotate(-5deg);
+    z-index: -1;
+    border-radius: 10px;
+}
+        .father i{
+            position: absolute;
+            left: 375px;
+    margin-top: 11px;
+    
+        }
+        input{
+          
+            width: 300px;
+            height: 35px;
+            border-radius: 30px;
+            
+            margin-bottom: 20px;
+            border-style:none ;
+            user-select: none;
+        }
+        button:hover{
+ 
+            background-color: #15d341;
+            ;
+            border: none;
+            
+        }
+        #btnsuccess{
+            margin-top: -70px;
+        }
+        h4{
+            display: inline;
+        }
+        label{
+            position: relative;
+            left: 100px;
+            top: -3px;
+        }
+        #forgot{
+            text-decoration: none;
+            position: relative;
+            bottom: 62px;
+            left: 75px;
+            
+        }
+        #iconfbgg{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            left: -150px;
+            top: 30px;
+            color:rgba(255,255,255, 0.6);
+            width: 100px;
+            
+            
+        }
+        #fb{
+            z-index: 1;
+            width: 40px;
+            height: 35px;
+            color: #333399;
+            background-color: rgba(226, 206, 206, 0.3);
+            padding-top: 5px;
+            padding-right: 100px;
+            border-radius: 20px;
+           
+        }
+        #fb:hover{
+            
+            cursor: pointer;
+            background-color: rgba(255,255 ,255 ,0.5 );
+            
+
+        }
+        #gg:hover{
+            
+            cursor: pointer;
+            background-color: rgba(255,255 ,255 ,0.5 );
+            
+
+        }
+        #gg{
+            z-index: 2;
+            width: 40px;
+            height: 35px;color:red;
+            background-color: rgba(226, 206, 206, 0.3);
+            padding-top: 5px;
+            padding-right: 100px;
+            border-radius: 20px;
+        }
+        #label1{
+            position: relative;
+            left: 475px;
+            top: 2px;
+            color:blue;
+            
+        }
+        #label1:hover{
+            cursor: pointer;
+            background-color: white;
+        }
+        #label2{
+            position: relative;
+            left: 260px;
+            top: 5px;
+            color:red;
+            
+        }
+        #label2:hover{
+            cursor: pointer;
+            background-color: white;
+       
+        }
+       
+       
+    
+
+
+    </style>
+</head>
+<body>
+    <script>
+        function showPassword(){
+           
+            let checkPass = document.getElementById("checkPass")
+            let icon =document.getElementById("icon")
+            if(checkPass.type == "password"){
+                checkPass.type="text";
+                icon.classList.remove("fa-eye")
+                icon.classList.add("fa-eye-slash")
+            }else{
+                checkPass.type="password";
+                icon.classList.remove("fa-eye-slash")
+                icon.classList.add("fa-eye")
+            }
+        }
+        function register(){ 
+            
+            let checkEmail = document.getElementById("checkEmail").value ;
+            let spanemail = document.getElementById("erorEmail")
+            let re =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            let flag = false
+            if(re.test(checkEmail)==false){
+                spanemail.setAttribute("style","display:blok;color:red")
+                
+
+            }else{
+                flag=true
+                spanemail.setAttribute("style","display:none")
+                // let xx = document.getElementById("erorEmail")
+            // xx.setAttribute("style","display:none")
+            }let checkPass = document.getElementById("checkPass"). value;
+            let spanmk = document.getElementById("confirnPass")
+            if(checkPass==""){ 
+                spanmk.setAttribute("style","display:block;color:red")
+
+            }else{
+                spanmk.setAttribute("style","display:none;")
+                // window.location.href="wed.html"
+            }
+            
+            if(flag=true){
+            let obj1 = {
+                email:checkEmail,
+                pass:checkPass,
+            }
+            let emailLocal = localStorage.getItem("information");
+            let changeArray =JSON.parse(emailLocal);
+            let num = false
+            for (i=0 ; i< changeArray.length ; i++ ){
+                if(obj1.email !== changeArray[i].email ){
+                    continue
+                  
+               
+
+
+                } else{
+                    num=i
+                    
+                }
+
+                   
+            }
+            console.log(num)
+           if(num==false && checkPass !==""){
+            let kxd = document.getElementById("erorEmail1")
+            spanemail.setAttribute("style","display:none")
+            kxd.setAttribute("style","display:block;color:red")
+           }
+            
+            
+             if(changeArray[num].password == obj1.pass ){
+                
+                 window.location.href="wed.html"
+            }else{
+                spanmk.setAttribute("style","display:block;color:red")
+            }
+            
+        }
+            
+        }
+        function register2(){
+            window.location.href ="index.html"
+        }
+        console.log(localStorage.key.length)
+
+       
+        
+
+
+    </script>
+    <div>
+        <div class="father">
+            <h2>Log in</h2>
+            <div class="input">
+                <i style="opacity: 0.4;" class="fa-solid fa-envelope"></i>
+                <input style="margin-bottom:5px ;" id="checkEmail" type="text" placeholder="     Email..."><br>
+                <div style="display:in ;">
+                <span style="display: none;" id="erorEmail"><em><h4>*email không chính xác*</h4></em></span><br>
+                <span style="display: none;" id="erorEmail1"><em><h4>*email chưa được đăng ký*</h4></em></span><br>
+                </div>
+                <input id="checkPass" type="password" placeholder="     Password">
+                <i style="opacity: 0.4;cursor: pointer;" id="icon" onclick="showPassword()" class="fa-solid fa-eye"></i>
+                <span id="confirnPass"  style="display: none;" ><em><h4>*mật khẩu không chính xác*</h4></em></span>
+                <div style="display:flex ;">
+                    <input style="width: 18px;position: relative ;left: 100px;top: -15px;  " type="checkbox"><label  for="">Save account</label>
+                </div>
+                <a id="forgot" href="https://account.garena.com/recovery#/">i forgot my password</a>
+            </div>
+            <div id="btnsuccess">
+                <button id="success" onclick="register()" style=" width : 100px;height: 40px;border-radius: 30px;margin-top: 40px;cursor: pointer;">Log in</button><br>
+                <p style="display: inline;">or</p><br>
+                <button style="width: 70px;height: 30px;border-radius: 30px;cursor: pointer;" onclick="register2()" >Sign up</button>
+                   <div id="iconfbgg">
+                <a style="text-decoration: none;" href="https://www.facebook.com/dialog/oauth?client_id=701380926584428&redirect_uri=https%3A%2F%2Fauthgop.garena.com%2Foauth%2Flogin%2Ffacebook&response_type=token&scope=public_profile%2Cemail&state=client_id%253D10017%2526redirect_uri%253Dhttps%25253A%25252F%25252Fnapthe.vn%25252Fapp%25252F%2526response_type%253Dtoken%2526platform%253D3%2526locale%253Dvi-VN%2526theme%253Dwhite&ret=login&fbapp_pres=0&logger_id=ccedadb8-0610-408b-975c-b60de2756235&tp=unspecified"><i id="fb" style="display: relative;left: 420px;font-size: 33px;" class="fa-brands fa-facebook"></i><label id="label1" for=""><h3>Facebook</h3></label></a>
+                <a style="text-decoration: none;" href="https://accounts.google.com/v3/signin/identifier?dsh=S17732928%3A1665845751795521&continue=https%3A%2F%2Fwww.google.com%3Fhl%3Dvi&ec=GAlA8wE&hl=vi&flowName=GlifWebSignIn&flowEntry=AddSession"><i style="font-size: 33px;left: 270px;bottom: 5px;" id="gg" class="fa-brands fa-google"></i><label id="label2" for=""><h3>Google</label></h3></a>
+                
+                    
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

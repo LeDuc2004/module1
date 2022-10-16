@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign up</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="your_website_domain/css_root/flaticon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="cha">
+        <h2 > Sign up </h2>
+        
+        <div >
+            <i class="fa-solid fa-user"></i>
+            <input  id="tk" type="text" placeholder="    Tên tài khoản" ><br>
+            
+            
+            <span style="display: none;" id="spantk"><em><h4>* Tài khoản không được chấp nhận  *</h4></em></span>
+            <i style="cursor:pointer ;" class="fa-solid fa-envelope"></i>
+            <input  id="email"  type="text" placeholder="    email...">
+            <span style="display: none;" id="spanemail"><em><h4>* email không được chấp nhận *</h4></em></span> 
+            <span id="emailExits" style="display:none" ><em>*Bạn đã đăng ký email này trước đây rồi*</em></span> 
+ 
+            <input  id="mk" type="password" placeholder="    mật khẩu">
+            <i style="cursor:pointer ;" id="icon" onclick="showPassword()" class="fa-solid fa-eye"></i>
+            <span style="display: none;" id="spanmk"><em><h4>* Vui lòng nhập khẩu *</h4></em></span>
+
+            <span style="display: none;" id="spanremk"><em><h4>* Mật khẩu nhập lại không đúng *</h4></em></span>
+            
+            <input   id="remk" type="password" placeholder="   xác nhận mật khẩu">
+           
+            <i style="cursor:pointer ;" id="iconClose" onclick="showConfirmPassword()" class="fa-solid fa-eye"></i>
+        </div>
+       
+           
+        
+        <div id="btnsuccess"> 
+            <button id="success" onclick="register()" style="cursor:pointer ;width : 100px;height: 40px;border-radius: 30px;margin-top: 40px;" > <h3>Create</h3> </button>
+            <p >or</p>
+            <button onclick="register2()" style="width: 70px;height: 30px;border-radius: 30px;cursor: pointer;">Log in</button>
+        </div>
+
+    </div>
+  </div>  
+    <script src="./main.js"></script>
+</body>
+</html>
